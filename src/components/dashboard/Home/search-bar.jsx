@@ -1,38 +1,21 @@
+import React from "react";
 import { useState, KeyboardEvent, ChangeEvent } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Search, Package, AlertCircle, Link2Icon} from "lucide-react";
+import { Search, Package, AlertCircle, Link2Icon } from "lucide-react";
 import axiosInstance from "@/axios";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 // Define interfaces for the API response
-interface OrderDetails {
-  status: string;
-  // Add other order details properties if they exist
-}
 
-interface ApiResponse {
-  orderDetails: OrderDetails;
-  message?: string;
-}
+export function SearchBarComponent() {
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [orderFound, setOrderFound] = useState(false);
 
-// Define interface for error state
-interface ApiError {
-  response?: {
-    data?: {
-      message: string;
-    };
-  };
-}
-
-export function SearchBarComponent(): JSX.Element {
-  const [searchInput, setSearchInput] = useState<string>("");
-  const [searchResult, setSearchResult] = useState<any>({});
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
-  const [orderFound, setOrderFound] = useState<boolean>(false);
-
-  const handleSearch = async (): Promise<void> => {
+  const handleSearch = async () => {
     if (!searchInput.trim()) {
       setError("Please enter a tracking number");
       return;
@@ -42,7 +25,7 @@ export function SearchBarComponent(): JSX.Element {
     setError(null);
 
     try {
-      const response = await axiosInstance.get<ApiResponse>(
+      const response = await axiosInstance.get(
         `/auth/track/${searchInput.trim()}`
       );
       const filteredOrder = response.data.orderDetails;
@@ -50,7 +33,7 @@ export function SearchBarComponent(): JSX.Element {
       setOrderFound(true);
       setError(null);
     } catch (err) {
-      const error = err as ApiError;
+      const error = err;
       setError(
         error.response?.data?.message ||
           "No order found with this tracking number"
@@ -61,13 +44,13 @@ export function SearchBarComponent(): JSX.Element {
     }
   };
 
-  const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>): void => {
+  const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       handleSearch();
     }
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
+  const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
 
@@ -145,17 +128,17 @@ export function SearchBarComponent(): JSX.Element {
                 <Package className="h-5 w-5 text-blue-600" />
                 <div className="flex justify-between">
                   <div>
-                  <p className="font-medium text-gray-900 px-2">{searchResult.trackingNumber}</p>
-                  <Badge>{searchResult.status}</Badge>
+                    <p className="font-medium text-gray-900 px-2">
+                      {searchResult.trackingNumber}
+                    </p>
+                    <Badge>{searchResult.status}</Badge>
                   </div>
-                  <Link to='/'>
-                  <div className="flex h-full ml-64 justify-center items-center">
-                    <Link2Icon  />
-                  </div>
+                  <Link to="/">
+                    <div className="flex h-full ml-64 justify-center items-center">
+                      <Link2Icon />
+                    </div>
                   </Link>
-
                 </div>
-
               </div>
             </div>
           )}

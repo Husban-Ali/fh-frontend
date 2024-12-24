@@ -1,5 +1,6 @@
-import { Calendar } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import React from "react";
+import { Calendar } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function PickupCard() {
   return (
@@ -9,9 +10,11 @@ export function PickupCard() {
           <div className="bg-primary p-3 rounded-full">
             <Calendar className="h-6 w-6 text-primary-foreground" />
           </div>
-          <h2 className="text-sm font-normal text-nowrap py-2">Schedule Pickup</h2>
+          <h2 className="text-sm font-normal text-nowrap py-2">
+            Schedule Pickup
+          </h2>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

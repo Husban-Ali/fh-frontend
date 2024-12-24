@@ -1,5 +1,6 @@
-import { MapPinHouse } from "lucide-react"
-import { Card, CardContent } from "@/components/ui/card"
+import React from "react";
+import { MapPinHouse } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 export function BranchCard() {
   return (
@@ -9,9 +10,11 @@ export function BranchCard() {
           <div className="bg-primary p-3 rounded-full">
             <MapPinHouse className="h-6 w-6 text-primary-foreground" />
           </div>
-          <h2 className="text-sm font-normal text-nowrap py-2">Branch Locator</h2>
+          <h2 className="text-sm font-normal text-nowrap py-2">
+            Branch Locator
+          </h2>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

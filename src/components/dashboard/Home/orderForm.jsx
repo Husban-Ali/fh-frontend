@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -25,12 +26,11 @@ import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import axiosInstance from "@/axios";
 import { useAuthContext } from "@/context/AuthContext";
-import { AppDispatch } from "@/redux/store";
 import { useDispatch } from "react-redux";
 import { setOrderDetails } from "@/features/order/orderSlice";
 export function OrdersForm() {
-  const dispatch : AppDispatch = useDispatch()
-  const [loading,setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const form = useForm({
     resolver: zodResolver(orderSchema),
     defaultValues: {
@@ -47,32 +47,31 @@ export function OrdersForm() {
       parcelDetails: "",
     },
   });
-  type FormValues = z.infer<typeof orderSchema>
-  const { authToken }= useAuthContext()
- 
-  const onSubmit = async (values: FormValues) => {
+  const { authToken } = useAuthContext();
+
+  const onSubmit = async (values) => {
     setLoading(true);
-    const formData  = {
-      userId : authToken?.user?._id,
-      ...values
-    }
-    console.log(formData)
+    const formData = {
+      userId: authToken?.user?._id,
+      ...values,
+    };
+    console.log(formData);
     try {
       const response = await axiosInstance.post("/auth/orders", formData, {
-        headers : {
+        headers: {
           Authorization: `Bearer ${authToken?.token}`,
-        }
+        },
       });
-      
+
       if (response?.status === 201) {
         toast.success("Order Successfully placed");
-        console.log(response.data)
+        console.log(response.data);
         dispatch(setOrderDetails(response.data));
-        form.reset()
+        form.reset();
       } else {
         toast.error(response.data.message || "Unexpected error occurred");
       }
-    } catch (error: any) {
+    } catch (error) {
       const errorMessage = error.response?.data?.message || "Network error";
       toast.error(errorMessage);
     } finally {
@@ -80,9 +79,7 @@ export function OrdersForm() {
     }
   };
   return (
-    
     <Card className="w-full max-w-2xl mx-auto shadow-lg">
-      
       <CardHeader>
         <CardTitle>Shipping Information</CardTitle>
         <CardDescription>
@@ -115,7 +112,11 @@ export function OrdersForm() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input {...field} type="email" placeholder="john@example.com" />
+                        <Input
+                          {...field}
+                          type="email"
+                          placeholder="john@example.com"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -186,7 +187,11 @@ export function OrdersForm() {
                     <FormItem>
                       <FormLabel>Email</FormLabel>
                       <FormControl>
-                        <Input {...field} type="email" placeholder="jane@example.com" />
+                        <Input
+                          {...field}
+                          type="email"
+                          placeholder="jane@example.com"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -245,7 +250,10 @@ export function OrdersForm() {
                   <FormItem>
                     <FormLabel>Details</FormLabel>
                     <FormControl>
-                      <Textarea {...field} placeholder="Provide any additional details about the parcel" />
+                      <Textarea
+                        {...field}
+                        placeholder="Provide any additional details about the parcel"
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -253,7 +261,11 @@ export function OrdersForm() {
               />
             </div>
 
-            <Button disabled={loading} className="py-6 px-6 font-Ubuntu font-bold w-full" type="submit">
+            <Button
+              disabled={loading}
+              className="py-6 px-6 font-Ubuntu font-bold w-full"
+              type="submit"
+            >
               {loading ? (
                 <span className="flex w-full items-center justify-center">
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
@@ -266,8 +278,5 @@ export function OrdersForm() {
         </Form>
       </CardContent>
     </Card>
-    
-    
   );
 }
-

@@ -21,12 +21,11 @@ import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Loader2 } from "lucide-react";
-import axiosInstance from "@/axios";
 import toast from "react-hot-toast";
 import { Button } from "../ui/button";
 import { loginSchema } from "@/schemas/loginschema";
 import { useAuthContext } from "@/context/AuthContext";
-
+import axiosInstance from "../../axios";
 const LoginForm = () => {
   const { setAuthToken } = useAuthContext();
 
@@ -56,8 +55,8 @@ const LoginForm = () => {
         toast.success("Login Successfull");
       }
     } catch (error) {
-      console.log("Login Error", error.response.data.error);
-      toast.error(error.response.data.error);
+      console.log("Login Error", error.response.data.message);
+      toast.error(error.response.data.message);
     } finally {
       setLoading(false);
     }
