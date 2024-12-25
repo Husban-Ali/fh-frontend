@@ -3,6 +3,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "@/pages/Auth/Login";
 import Contact from "@/pages/home/Contact";
+import MediaProcurement from "../pages/home/MediaProcurement";
+import Franchise from "../pages/home/Franchise";
+import Corporate from "../pages/home/Corporate";
+import Careers from "../pages/home/Careers";
 import Admin from "@/pages/Admin/Admin";
 import Dashboard from "@/pages/Admin/Dashboard";
 import AdminLayout from "@/layouts/AdminLayout";
@@ -93,6 +97,22 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <Contact />,
+  },
+  {
+    path: "/mediaprocurement",
+    element: <MediaProcurement />,
+  },
+  {
+    path: "/corporate",
+    element: <Corporate />,
+  },
+  {
+    path: "/career",
+    element: <Careers />,
+  },
+  {
+    path: "/franchise",
+    element: <Franchise />,
   },
 ]);
 
