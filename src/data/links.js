@@ -1,7 +1,7 @@
 const links = [
-  { name: "SERVICES" },
-  { name: "COD" },
-  { name: "CASE/STUDIES" },
+  { name: "SERVICES", redirect: "/services" },
+  // { name: "COD" },
+  { name: "CASE/STUDIES", redirect: "/casestudies" },
   { name: "MEDIA PROCUREMENT", redirect: "/mediaprocurement" },
   { name: "CORPORATE", redirect: "/corporate" },
   { name: "FRANCHISE", redirect: "/franchise" },

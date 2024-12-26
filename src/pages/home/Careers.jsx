@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "@/components/statics/Header";
 import Footer from "@/components/statics/Footer";
+import career from "../../assets/Images/career.jpg";
 import AOS from "aos";
 
 // Scroll Animation
@@ -28,7 +29,7 @@ const Careers = () => {
             about career openings at F&H International.
           </p>
           <img
-            src="/coming-soon.svg" // Replace with an appropriate coming soon illustration
+            src={career}
             alt="Coming Soon Illustration"
             className="w-80 md:w-96 lg:w-[500px] mx-auto mb-12"
           />

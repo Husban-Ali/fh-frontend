@@ -6,6 +6,8 @@ import Contact from "@/pages/home/Contact";
 import MediaProcurement from "../pages/home/MediaProcurement";
 import Franchise from "../pages/home/Franchise";
 import Corporate from "../pages/home/Corporate";
+import Services from "../pages/home/Services";
+import CaseStudies from "../pages/home/Case";
 import Careers from "../pages/home/Careers";
 import Admin from "@/pages/Admin/Admin";
 import Dashboard from "@/pages/Admin/Dashboard";
@@ -113,6 +115,14 @@ const router = createBrowserRouter([
   {
     path: "/franchise",
     element: <Franchise />,
+  },
+  {
+    path: "/services",
+    element: <Services />,
+  },
+  {
+    path: "/casestudies",
+    element: <CaseStudies />,
   },
 ]);
 

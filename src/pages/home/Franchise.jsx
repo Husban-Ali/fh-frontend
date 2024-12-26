@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "@/components/statics/Header";
 import Footer from "@/components/statics/Footer";
+import franchise from "../../assets/Images/franchise.jpg";
 import AOS from "aos";
 
 // Scroll Animation
@@ -34,7 +35,7 @@ const Franchise = () => {
 
           {/* Coming Soon Image */}
           <img
-            src="/coming-soon.svg" // Replace with an appropriate coming soon illustration
+            src={franchise}
             alt="Coming Soon Illustration"
             className="w-80 md:w-96 lg:w-[500px] mx-auto mb-12"
           />
