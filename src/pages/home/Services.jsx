@@ -6,12 +6,7 @@ import service2 from "../../assets/Images/service2.jpg";
 import service3 from "../../assets/Images/service3.jpg";
 import service4 from "../../assets/Images/service4.jpg";
 import service5 from "../../assets/Images/service5.jpg";
-import service6 from "../../assets/Images/service6.jpg";
-import service7 from "../../assets/Images/service7.jpg";
-import service8 from "../../assets/Images/service8.jpg";
-import service9 from "../../assets/Images/service9.jpg";
-import service10 from "../../assets/Images/service10.jpg";
-import service11 from "../../assets/Images/service11.jpg";
+
 // import service12 from "../../assets/Images/service12.jpg"; // Add additional service images as needed
 import AOS from "aos";
 
