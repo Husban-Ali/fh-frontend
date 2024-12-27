@@ -12,6 +12,7 @@ import service8 from "../../assets/Images/service8.jpg";
 import service9 from "../../assets/Images/service9.jpg";
 import service10 from "../../assets/Images/service10.jpg";
 import service11 from "../../assets/Images/service11.jpg";
+// import service12 from "../../assets/Images/service12.jpg"; // Add additional service images as needed
 import AOS from "aos";
 
 // Scroll Animation
@@ -20,76 +21,74 @@ import "aos/dist/aos.css";
 
 const servicesData = [
   {
-    title: "Import Services",
+    title: "DHL",
     description:
-      "We specialize in hassle-free import services to bring the best products to your business from around the globe.",
+      "Global logistics solutions tailored to your import and export needs.",
     icon: service1,
   },
   {
-    title: "Export Services",
-    description:
-      "Expand your business to international markets with our reliable and efficient export solutions.",
+    title: "FedEx",
+    description: "Efficient and reliable global shipping with FedEx services.",
     icon: service2,
   },
   {
-    title: "Logistics Solutions",
+    title: "UPS",
     description:
-      "From warehousing to shipping, our tailored logistics services ensure your supply chain runs smoothly.",
+      "Comprehensive shipping solutions for international and domestic deliveries.",
     icon: service3,
   },
   {
-    title: "Customs Clearance",
+    title: "Skynet",
     description:
-      "Hassle-free customs management to ensure your goods clear international borders smoothly.",
+      "Fast and secure courier services to meet your shipping needs.",
     icon: service4,
   },
   {
-    title: "Freight Forwarding",
-    description:
-      "Comprehensive air, sea, and land freight solutions for all your logistics needs.",
+    title: "Aramex",
+    description: "Innovative logistics and transportation services worldwide.",
     icon: service5,
   },
   {
-    title: "Warehousing and Distribution",
+    title: "Via Dubai DHL",
     description:
-      "Safe storage and timely distribution of goods to your desired destinations.",
-    icon: service6,
-  },
-  {
-    title: "Cargo Insurance",
-    description:
-      "Protect your shipments with tailored insurance policies to minimize risks.",
-    icon: service7,
-  },
-  {
-    title: "Supply Chain Management",
-    description:
-      "Streamlined solutions to optimize your end-to-end supply chain processes.",
-    icon: service8,
-  },
-  {
-    title: "Trade Consultancy",
-    description:
-      "Expert guidance on trade regulations and strategies to maximize your business potential.",
-    icon: service9,
-  },
-  {
-    title: "Packaging Solutions",
-    description:
-      "Secure and customized packaging to ensure goods arrive intact.",
-    icon: service10,
-  },
-  {
-    title: "Door-to-Door Delivery",
-    description:
-      "Seamless pickup and delivery services from your location to your customers' doorsteps.",
-    icon: service11,
-  },
-  {
-    title: "Import Services",
-    description:
-      "We specialize in hassle-free import services to bring the best products to your business from around the globe.",
+      "Specialized DHL services routed via Dubai for efficiency and speed.",
     icon: service1,
+  },
+  {
+    title: "Via Dubai UPS",
+    description:
+      "UPS shipping services optimized through Dubai for seamless delivery.",
+    icon: service3,
+  },
+  {
+    title: "Via Dubai FedEx",
+    description:
+      "FedEx logistics through Dubai, ensuring reliable global connections.",
+    icon: service2,
+  },
+  {
+    title: "Via Dubai Aramex",
+    description:
+      "Optimized Aramex services via Dubai for cost-effective shipping.",
+    icon: service5,
+  },
+  {
+    title: "Via UK DHL",
+    description:
+      "Efficient DHL services routed through the UK for enhanced delivery networks.",
+    icon: service1,
+  },
+  {
+    title: "Via UK UPS",
+    description:
+      "Reliable UPS shipping services routed through the UK for seamless global delivery.",
+    icon: service3,
+  },
+  {
+    title: "Via UK FedEx",
+    description:
+      "FedEx services routed through the UK for enhanced logistics and delivery options.",
+    icon: service2,
   },
 ];
 

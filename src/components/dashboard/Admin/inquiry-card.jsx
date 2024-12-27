@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, User, MessageSquare } from "lucide-react";
 
