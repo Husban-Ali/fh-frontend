@@ -53,16 +53,7 @@ export function NavbarComponent() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-56">
-                <DropdownMenuItem>
-                  <Link to="/profile" className="flex w-full">
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Link to="/settings" className="flex w-full">
-                    Settings
-                  </Link>
-                </DropdownMenuItem>
+                
                 <DropdownMenuItem>
                   <Link to="/dashboard/orders" className="flex w-full">
                     Orders

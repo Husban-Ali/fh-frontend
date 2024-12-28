@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React,{ useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,15 +22,7 @@ export function OrderTableHeaderComponent({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [newProduct, setNewProduct] =
-    useState <
-    Product >
-    {
-      id: "",
-      name: "",
-      status: "In Stock",
-      category: "",
-    };
-
+    useState({})
   const handleSearch = async (e) => {
     e.preventDefault();
     setIsSearching(true);

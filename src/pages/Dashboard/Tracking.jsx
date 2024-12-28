@@ -1,7 +1,11 @@
-
+import React from "react"
 const Tracking = () => {
   return (
-    <div>Tracking</div>
+    <div className="flex h-screen w-screen justify-center items-center">
+      <div>
+        Tracking
+      </div>
+    </div>
   )
 }
 

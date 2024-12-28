@@ -1,5 +1,5 @@
-import { OrderDetailCard } from "@/components/dashboard/Home/order-detail-card";
 import React from "react";
+import { OrderDetailCard } from "@/components/dashboard/Home/order-detail-card";
 
 const OrderListing = () => {
   return (
