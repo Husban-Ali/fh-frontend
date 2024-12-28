@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
@@ -9,12 +9,37 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import axios from "../../../axios"; // Import the axios instance
+import { InquiryCard } from "./inquiry-card"; // Import InquiryCard component
 
-export function InquiryTable({ inquiries = [] }) {
+export function InquiryTable() {
+  const [inquiries, setInquiries] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(inquiries.length / itemsPerPage);
 
+  // Fetch all inquiries/tickets when component mounts
+  useEffect(() => {
+    async function fetchTickets() {
+      try {
+        const response = await axios.get("auth/admin/tickets");
+        setInquiries(response.data);
+      } catch (error) {
+        console.error("Error fetching tickets:", error);
+      }
+    }
+
+    fetchTickets();
+  }, []);
+
+  // Handle ticket delete from the parent
+  const handleTicketDelete = (ticketId) => {
+    setInquiries((prevInquiries) =>
+      prevInquiries.filter((inquiry) => inquiry._id !== ticketId)
+    );
+  };
+
+  // Pagination logic
+  const totalPages = Math.ceil(inquiries.length / itemsPerPage);
   const paginatedInquiries = inquiries.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -22,23 +47,26 @@ export function InquiryTable({ inquiries = [] }) {
 
   return (
     <div className="w-full h-1/3 max-w-4xl mx-auto space-y-4">
-      <Table>
+      <Table className="border-separate border-spacing-2">
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">ID</TableHead>
             <TableHead>Inquiry Details</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {paginatedInquiries.map((inquiry) => (
-            <TableRow key={inquiry.id}>
-              <TableCell className="font-medium">{inquiry.id}</TableCell>
-              <TableCell>{/* <InquiryCard {...inquiry} />  */}</TableCell>
+            <TableRow key={inquiry._id}>
+              <TableCell>
+                <InquiryCard
+                  inquiry={inquiry}
+                  onDelete={handleTicketDelete} // Pass delete handler to InquiryCard
+                />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mt-4">
         <Button
           variant="outline"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -47,7 +75,7 @@ export function InquiryTable({ inquiries = [] }) {
           <ChevronLeft className="h-4 w-4 mr-2" />
           Previous
         </Button>
-        <span>
+        <span className="text-sm text-gray-600">
           Page {currentPage} of {totalPages}
         </span>
         <Button
