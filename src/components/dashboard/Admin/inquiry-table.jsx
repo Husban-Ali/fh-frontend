@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Table,
   TableBody,
@@ -9,40 +9,36 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useGetTicketsQuery } from "../../../redux/api/ApiRoutes";
 
-export function InquiryTable() {
-  const {data} = useGetTicketsQuery()
+export function InquiryTable({ inquiries = [] }) {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(data?.length / itemsPerPage);
+  const totalPages = Math.ceil(inquiries.length / itemsPerPage);
 
-  const paginateddata = data?.slice(
+  const paginatedInquiries = inquiries.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   return (
-    <div className="w-full h-1/3 max-w-4xl mx-auto space-y-4 pt-8">
+    <div className="w-full h-1/3 max-w-4xl mx-auto space-y-4">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">Name</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Message</TableHead>
+            <TableHead className="w-[100px]">ID</TableHead>
+            <TableHead>Inquiry Details</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {paginateddata?.map((inquiry) => (
+          {paginatedInquiries.map((inquiry) => (
             <TableRow key={inquiry.id}>
-              <TableCell>{inquiry?.name}</TableCell>
-              <TableCell>{inquiry.email}</TableCell>
-              <TableCell>{inquiry.message}</TableCell>
+              <TableCell className="font-medium">{inquiry.id}</TableCell>
+              <TableCell>{/* <InquiryCard {...inquiry} />  */}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center mt-4">
         <Button
           variant="outline"
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
@@ -51,7 +47,7 @@ export function InquiryTable() {
           <ChevronLeft className="h-4 w-4 mr-2" />
           Previous
         </Button>
-        <span>
+        <span className="text-sm text-gray-600">
           Page {currentPage} of {totalPages}
         </span>
         <Button

@@ -1,4 +1,4 @@
-import React,{ useState } from "react";
+import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,7 +22,14 @@ export function OrderTableHeaderComponent({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const [newProduct, setNewProduct] =
-    useState({})
+    useState <
+    Product >
+    {
+      id: "",
+      name: "",
+      status: "In Stock",
+      category: "",
+    };
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -116,8 +123,8 @@ export function OrderTableHeaderComponent({ onSearch }) {
                 </Label>
                 <Select
                   value={newProduct.status}
-                  onValueChange={
-                    (value) => setNewProduct({ ...newProduct, status: value }) // Corrected this line
+                  onValueChange={(value) =>
+                    setNewProduct({ ...newProduct, status: value })
                   }
                 >
                   <SelectTrigger className="col-span-3">
