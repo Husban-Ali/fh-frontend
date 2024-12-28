@@ -12,6 +12,7 @@ import Careers from "../pages/home/Careers";
 import Admin from "@/pages/Admin/Admin";
 import Dashboard from "@/pages/Admin/Dashboard";
 import AdminLayout from "@/layouts/AdminLayout";
+import WhyUs from "../components/statics/Whyus";
 import Orders from "@/pages/Admin/Orders";
 import Inquiries from "@/pages/Admin/Inquiries";
 import AuthLayout from "@/layouts/AuthLayout";
@@ -123,6 +124,10 @@ const router = createBrowserRouter([
   {
     path: "/casestudies",
     element: <CaseStudies />,
+  },
+  {
+    path: "/why-us",
+    element: <WhyUs />,
   },
 ]);
 

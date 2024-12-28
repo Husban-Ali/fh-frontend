@@ -43,10 +43,10 @@ export function AdminSidebar() {
 }
 
 function SidebarContent() {
-  const {removeAuthToken} = useAuthContext()
+  const { removeAuthToken } = useAuthContext();
   const handleLogout = () => {
-      removeAuthToken()
-  }
+    removeAuthToken();
+  };
   return (
     <div className="flex h-full flex-col">
       <div className="flex min-h-14 items-center border-b px-4">
