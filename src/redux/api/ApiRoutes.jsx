@@ -16,7 +16,22 @@ export const ReduxApi = createApi({
         },
       }),
     }),
+    getUsers: builder.query({
+      query: (token) => ({
+        url: "/admin/users",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
+    getTickets: builder.query({
+      query: () => ({
+        url: "/admin/tickets",
+        method: "GET"
+      }),
+    }),
   }),
 });
 
-export const { useGetOrdersQuery } = ReduxApi;
+export const { useGetOrdersQuery,useGetUsersQuery,useGetTicketsQuery} = ReduxApi;

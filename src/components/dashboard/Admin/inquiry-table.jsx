@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Table,
   TableBody,
@@ -9,31 +9,35 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useGetTicketsQuery } from "../../../redux/api/ApiRoutes";
 
-export function InquiryTable({ inquiries = [] }) {
+export function InquiryTable() {
+  const {data} = useGetTicketsQuery()
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
-  const totalPages = Math.ceil(inquiries.length / itemsPerPage);
+  const totalPages = Math.ceil(data?.length / itemsPerPage);
 
-  const paginatedInquiries = inquiries.slice(
+  const paginateddata = data?.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
   return (
-    <div className="w-full h-1/3 max-w-4xl mx-auto space-y-4">
+    <div className="w-full h-1/3 max-w-4xl mx-auto space-y-4 pt-8">
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-[100px]">ID</TableHead>
-            <TableHead>Inquiry Details</TableHead>
+            <TableHead className="w-[100px]">Name</TableHead>
+            <TableHead>Email</TableHead>
+            <TableHead>Message</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {paginatedInquiries.map((inquiry) => (
+          {paginateddata?.map((inquiry) => (
             <TableRow key={inquiry.id}>
-              <TableCell className="font-medium">{inquiry.id}</TableCell>
-              <TableCell>{/* <InquiryCard {...inquiry} />  */}</TableCell>
+              <TableCell>{inquiry?.name}</TableCell>
+              <TableCell>{inquiry.email}</TableCell>
+              <TableCell>{inquiry.message}</TableCell>
             </TableRow>
           ))}
         </TableBody>

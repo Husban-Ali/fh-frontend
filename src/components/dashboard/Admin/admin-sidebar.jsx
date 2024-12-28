@@ -23,7 +23,7 @@ import { useAuthContext } from "@/context/AuthContext";
 
 export function AdminSidebar() {
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen sticky">
       {/* Sidebar for larger screens */}
       <aside className="hidden w-64 border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
         <SidebarContent />
@@ -77,13 +77,8 @@ function SidebarContent() {
               Inquiries
             </Button>
           </Link>
-          <Link to="">
-            <Button variant="ghost" className="w-full justify-start gap-2">
-              <Box className="h-4 w-4" />
-              Products
-            </Button>
-          </Link>
-          <Link to="">
+         
+          <Link to="/admin/customers">
             <Button variant="ghost" className="w-full justify-start gap-2">
               <Users className="h-4 w-4" />
               Customers

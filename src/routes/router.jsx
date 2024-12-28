@@ -24,6 +24,7 @@ import Rate from "@/pages/Dashboard/Rate";
 import OrderListing from "@/pages/Dashboard/OrderListing";
 import OrderDescriptiom from "@/pages/Dashboard/OrderDescriptiom";
 import Tracking from "@/pages/Dashboard/Tracking";
+import Customer from "../pages/Admin/Customer";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "/admin/inquiries",
         element: <Inquiries />,
+      },
+      {
+        path: "/admin/customers",
+        element: <Customer />,
       },
     ],
   },
