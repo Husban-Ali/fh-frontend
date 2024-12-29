@@ -24,8 +24,8 @@ import { useAuthContext } from "@/context/AuthContext";
 export function AdminSidebar() {
   return (
     <div className="flex h-screen">
-      {/* Sidebar for larger screens */}
-      <aside className="hidden w-64 border-r bg-gray-100/40 lg:block dark:bg-gray-800/40">
+      {/* Sidebar for larger screens - Fixed */}
+      <aside className="hidden lg:block w-64 bg-gray-100/40 border-r dark:bg-gray-800/40 fixed top-0 left-0 h-full">
         <SidebarContent />
       </aside>
       {/* Page Content Area */}
@@ -81,7 +81,6 @@ function SidebarContent() {
               Inquiries
             </Button>
           </Link>
-         
           <Link to="/admin/customers">
             <Button variant="ghost" className="w-full justify-start gap-2">
               <Users className="h-4 w-4" />

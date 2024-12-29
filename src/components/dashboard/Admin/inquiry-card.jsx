@@ -2,7 +2,6 @@ import React from "react";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, User, MessageSquare } from "lucide-react";
-import React from "react";
 export function InquiryCard(
   { email, name, message } = {
     email: "example@email.com",

@@ -4,7 +4,7 @@ import { OrderTableHeaderComponent } from "@/components/dashboard/Admin/order-ta
 
 const Orders = () => {
   return (
-    <div className="flex flex-col  w-full h-screen">
+    <div className="flex flex-col w-screen h-screen">
       <div className=" flex justify-center items-center">
         <h1 className="text-secondary font-Ubuntu text-3xl py-6">Orders</h1>
       </div>
