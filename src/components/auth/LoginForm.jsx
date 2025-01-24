@@ -41,6 +41,29 @@ const LoginForm = () => {
     },
   });
 
+  // const submitHandler = async (values) => {
+  //   setLoading(true);
+
+  //   const formData = {
+  //     email: values.email,
+  //     password: values.password,
+  //   };
+  //   try {
+  //     const response = await axiosInstance.post(`/auth/login`, formData);
+
+  //     if (response.status === 200) {
+  //       setAuthToken(response?.data);
+  //       toast.success("Login Successful");
+  //       // Navigate to dashboard or another page after successful login
+  //       navigate("/dashboard");
+  //     }
+  //   } catch (error) {
+  //     console.log("Login Error", error.response.data.message);
+  //     toast.error(error.response.data.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
   const submitHandler = async (values) => {
     setLoading(true);
 
@@ -48,18 +71,27 @@ const LoginForm = () => {
       email: values.email,
       password: values.password,
     };
+
     try {
       const response = await axiosInstance.post(`/auth/login`, formData);
 
       if (response.status === 200) {
+        // Save the user data and token in localStorage
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        localStorage.setItem("token", response.data.token);
+
         setAuthToken(response?.data);
         toast.success("Login Successful");
+
         // Navigate to dashboard or another page after successful login
         navigate("/dashboard");
       }
     } catch (error) {
-      console.log("Login Error", error.response.data.message);
-      toast.error(error.response.data.message);
+      console.log(
+        "Login Error",
+        error.response?.data?.message || error.message
+      );
+      toast.error(error.response?.data?.message || "An error occurred");
     } finally {
       setLoading(false);
     }
