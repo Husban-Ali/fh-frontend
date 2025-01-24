@@ -34,7 +34,7 @@ export function OrderDetailCard() {
         }
 
         const response = await fetch(
-          `http://localhost:8000/api/auth/userorder?userId=${user._id}`,
+          `https://fand-h.vercel.app/api/auth/userorder?userId=${user._id}`,
           {
             method: "GET",
             headers: {
